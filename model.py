@@ -18,9 +18,13 @@ for col in data.columns:
     data[col] = data[col].fillna(data[col].mean())
 
 
-# dividing data into train and test
+# making data a numpy array like
 x = data.drop(['median_house_value'], axis=1)
 y = data.median_house_value
+x = x.values
+y = y.values
+
+# dividing data into train and test
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=7)
 
 # standardzing the data
