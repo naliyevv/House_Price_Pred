@@ -4,14 +4,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split, KFold, cross_val_score
 import pickle
 
-
-
 data = pd.read_csv('housing.csv')
-
 # select only 1000 rows
 data = data[:1000]
 # converting categorical column to int datatype
-
 label_encoder = LabelEncoder()
 obj = (data.dtypes == 'object')
 for col in list(obj[obj].index):
@@ -35,11 +31,9 @@ rescaledx = scaler.transform(x_train)
 # selecting and fitting the model for training
 model = RandomForestRegressor()
 model.fit(rescaledx, y_train)
-
 # saving the trained mode
 pickle.dump(model, open('rf_model.pkl', 'wb'))
-
-
 # saving StandardScaler
 pickle.dump(stds, open('scaler.pkl', 'wb'))
+
 
